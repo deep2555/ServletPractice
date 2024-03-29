@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.container {
+	width: 300px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+}
+
+.container form {
+	display: flex;
+	flex-direction: column;
+}
+
+.container input[type="text"] {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+.container input[type="number"] {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+.container input[type="button"] {
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.container input[type="button"]:hover {
+	background-color: #45a049;
+}
+</style>
+</head>
+<body>
+
+	<h1 align="center">Add the student detail here</h1>
+
+	<div class="container">
+		<form action="">
+
+			<input type="text" name="name" placeholder="Enter the Student Name">
+			
+			<input type="number" name="rollNo"placeholder="Enter the Student Roll Number"> 
+			
+			<input type="text" name="subject" placeholder="Enter the Subject Name">
+			
+			<input type="number" name="marks" placeholder="Enter the marks">
+			
+			<input type="button" value="Submit">
+
+
+
+		</form>
+	</div>
+
+</body>
+</html>
