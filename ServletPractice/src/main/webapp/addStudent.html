@@ -34,11 +34,11 @@
 	box-sizing: border-box;
 }
 
-.container input[type="button"] {
-	padding: 10px 20px;
-	background-color: #4CAF50;
+.button {
+	background-color: green;
 	color: white;
-	border: none;
+	padding: 10px 20px;
+	border: 10px;
 	border-radius: 5px;
 	cursor: pointer;
 }
@@ -52,23 +52,24 @@
 
 	<h1 align="center">Add the student detail here</h1>
 
-	<div class="container">
-		<form action="">
+	<form action="MainServlet" method="post">
+		<div class="container">
 
 			<input type="text" name="name" placeholder="Enter the Student Name">
-			
-			<input type="number" name="rollNo"placeholder="Enter the Student Roll Number"> 
-			
-			<input type="text" name="subject" placeholder="Enter the Subject Name">
-			
-			<input type="number" name="marks" placeholder="Enter the marks">
-			
-			<input type="button" value="Submit">
 
+			<input type="number" name="rollNo"
+				placeholder="Enter the Student Roll Number"> <input
+				type="text" name="subject" placeholder="Enter the Subject Name">
 
+			<input type="number" name="English Marks"
+				placeholder="Enter the English marks"> <input type="number"
+				name="Hindi Marks" placeholder="Enter the Hindi marks"> <input
+				type="number" name="Chemistry Marks"
+				placeholder="Enter the Chemistry marks"> 
+			<button class = "button">Submit</button>
 
-		</form>
-	</div>
+		</div>
+	</form>
 
 </body>
 </html>
