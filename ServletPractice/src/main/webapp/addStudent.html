@@ -52,24 +52,19 @@
 
 	<h1 align="center">Add the student detail here</h1>
 
-	<form action="MainServlet" method="post">
-		<div class="container">
 
+	<div class="container">
+		<form action="MainServlet" method="post">
 			<input type="text" name="name" placeholder="Enter the Student Name">
 
-			<input type="number" name="rollNo"
-				placeholder="Enter the Student Roll Number"> <input
-				type="text" name="subject" placeholder="Enter the Subject Name">
+			<input type="number" name="rollNo" placeholder="Enter the Student Roll Number"> 
+			<input type="number" name="EnglishMarks" placeholder="Enter the English marks"> 
+			<input type="number" name="HindiMarks" placeholder="Enter the Hindi marks">
+			 <input type="number" name="ChemistryMarks" placeholder="Enter the Chemistry marks">
+			<button class="button">Submit</button>
+		</form>
+	</div>
 
-			<input type="number" name="English Marks"
-				placeholder="Enter the English marks"> <input type="number"
-				name="Hindi Marks" placeholder="Enter the Hindi marks"> <input
-				type="number" name="Chemistry Marks"
-				placeholder="Enter the Chemistry marks"> 
-			<button class = "button">Submit</button>
-
-		</div>
-	</form>
 
 </body>
 </html>
