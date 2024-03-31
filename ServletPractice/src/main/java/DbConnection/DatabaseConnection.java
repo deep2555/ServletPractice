@@ -3,6 +3,7 @@ package DbConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
 
 public final class DatabaseConnection {
 
@@ -21,7 +22,7 @@ public final class DatabaseConnection {
 
 		if (con == null) {
 			try {
-				 
+
 				con = DriverManager.getConnection(ConnectionProvider.DB_URL, ConnectionProvider.DB_USERNAME,
 						ConnectionProvider.DB_USERPASS);
 				System.out.println("Coonected to the SQL server Database");
@@ -30,18 +31,50 @@ public final class DatabaseConnection {
 				System.err.println("Failed to eastablish the connection : " + e.getMessage());
 				e.printStackTrace();
 			}
-//			} catch (ClassNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
 
 		}
 		return con;
 
 	}
 
-	public static void insertDataIntoDB() {
-//		getConnection();
+	public static void insertDataIntoDB(String tableName, Object... values) throws SQLException {
+
+		if (values.length == 0) {
+			System.err.println("Invalid Parameters ...");
+			return;
+		}
+
+		System.out.println(values.length);
+		StringBuilder strBuilder = new StringBuilder("Insert Into ").append(tableName);
+		StringBuilder placeholder = new StringBuilder();
+
+		for (int i = 0; i < values.length; i++) {
+			if (i > 0) {
+				
+				placeholder.append(",");
+			}
+
+			placeholder.append("?");
+		}
+
+		strBuilder.append(" Values (").append(placeholder).append(")");
+		
+		System.out.println(strBuilder.toString());
+
+		try (Connection getconn = getConnection();
+				
+				PreparedStatement ps = getconn.prepareStatement(strBuilder.toString())) {
+
+			for (int i = 0; i < values.length; i++) {
+				ps.setObject(i+1, values[i]);
+			}
+
+			ps.executeUpdate();
+			System.out.println("Data Inserted Successfully into the database");
+
+		} catch (ClassNotFoundException e) {
+			System.err.println("Error inserting data into database: " + e.getMessage());
+		}
 
 	}
 
