@@ -1,14 +1,12 @@
 package servletpractice;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
 
 import DbConnection.DatabaseConnection;
 
@@ -19,6 +17,7 @@ public class MainServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		fetchDetailsFromForm(request, response);
+		fetchDetailsFromDB();
 
 		// add method to fetch the details from the form
 		// add method to put details in database
@@ -26,6 +25,7 @@ public class MainServlet extends HttpServlet {
 		// add method to show the input on the main servlet page through table
 
 	}
+
 
 	public void fetchDetailsFromForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -42,6 +42,10 @@ public class MainServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void fetchDetailsFromDB() {
+		
 	}
 
 }
