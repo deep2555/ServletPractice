@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.container {
+	width: 300px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+}
+
+.container form {
+	display: flex;
+	flex-direction: column;
+}
+
+.container input[type="text"] {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+.button {
+	background-color: green;
+	color: white;
+	padding: 10px 20px;
+	border: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	
+}
+</style>
+</head>
+<body>
+
+
+	<h1 align="center">Enter the Student Roll Number</h1>
+
+	<div class="container">
+		<form action="MainServlet" method="post">
+
+			<input type="text" name="rollNo" placeholder="Enter the Roll Number">
+
+			<button class="button" name="action" value="fetchData">Fetch
+				Data</button>
+
+		</form>
+
+
+	</div>
+
+
+
+
+</body>
+</html>

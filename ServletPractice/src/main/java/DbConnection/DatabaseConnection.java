@@ -3,6 +3,8 @@ package DbConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+
 import java.sql.PreparedStatement;
 
 public final class DatabaseConnection {
@@ -50,7 +52,7 @@ public final class DatabaseConnection {
 
 		for (int i = 0; i < values.length; i++) {
 			if (i > 0) {
-				
+
 				placeholder.append(",");
 			}
 
@@ -58,15 +60,15 @@ public final class DatabaseConnection {
 		}
 
 		strBuilder.append(" Values (").append(placeholder).append(")");
-		
+
 		System.out.println(strBuilder.toString());
 
 		try (Connection getconn = getConnection();
-				
+
 				PreparedStatement ps = getconn.prepareStatement(strBuilder.toString())) {
 
 			for (int i = 0; i < values.length; i++) {
-				ps.setObject(i+1, values[i]);
+				ps.setObject(i + 1, values[i]);
 			}
 
 			ps.executeUpdate();
@@ -74,6 +76,39 @@ public final class DatabaseConnection {
 
 		} catch (ClassNotFoundException e) {
 			System.err.println("Error inserting data into database: " + e.getMessage());
+		}
+
+	}
+
+	public static void fetchDataFromdb(String rollNumber) throws SQLException {
+
+		System.out.println("inside the fetch data from db method : " + rollNumber);
+		String query = "Select * from Student_Data where rollNo = ?";
+
+		try (Connection con = getConnection(); PreparedStatement statement = con.prepareStatement(query)) {
+
+			statement.setString(1, rollNumber);
+
+			ResultSet fetchData = statement.executeQuery();
+
+			while (fetchData.next()) {
+				String name = fetchData.getString("name");
+				String rollNo = fetchData.getString("rollNo");
+				String englishMarks = fetchData.getString("EnglishMarks");
+				String hindiMarks = fetchData.getString("HindiMarks");
+				String chemistryMarks = fetchData.getString("ChemistryMarks");
+
+				// Do something with the retrieved data
+				System.out.println("Name: " + name);
+				System.out.println("Roll Number: " + rollNo);
+				System.out.println("English Marks: " + englishMarks);
+				System.out.println("Hindi Marks: " + hindiMarks);
+				System.out.println("Chemistry Marks: " + chemistryMarks);
+				System.out.println("---------------------------");
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 
 	}
