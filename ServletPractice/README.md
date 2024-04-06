@@ -10,3 +10,5 @@ Purpose:
 The purpose of this project is to provide a hands-on example of servlet development and database interaction using Java. By exploring the registration and data retrieval functionalities, developers can gain insights into building web applications with servlets and managing data persistence.
 
 Feel free to explore the project and its functionalities! If you have any questions or feedback, don't hesitate to reach out. Happy coding!
+
+![Output Image](Images/front.png)
