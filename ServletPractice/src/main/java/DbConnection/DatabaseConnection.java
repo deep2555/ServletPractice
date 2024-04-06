@@ -2,10 +2,13 @@ package DbConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import servletpractice.Student;
 
 public final class DatabaseConnection {
 
@@ -80,10 +83,14 @@ public final class DatabaseConnection {
 
 	}
 
-	public static void fetchDataFromdb(String rollNumber) throws SQLException {
+	public static List<Student> fetchDataFromdb(String rollNumber) throws SQLException {
 
 		System.out.println("inside the fetch data from db method : " + rollNumber);
 		String query = "Select * from Student_Data where rollNo = ?";
+		
+		List<Student> student = new ArrayList<>();
+		
+		
 
 		try (Connection con = getConnection(); PreparedStatement statement = con.prepareStatement(query)) {
 
@@ -97,19 +104,23 @@ public final class DatabaseConnection {
 				String englishMarks = fetchData.getString("EnglishMarks");
 				String hindiMarks = fetchData.getString("HindiMarks");
 				String chemistryMarks = fetchData.getString("ChemistryMarks");
+				
+				student.add(new Student(name, rollNumber, englishMarks, hindiMarks, chemistryMarks));
+
 
 				// Do something with the retrieved data
-				System.out.println("Name: " + name);
-				System.out.println("Roll Number: " + rollNo);
-				System.out.println("English Marks: " + englishMarks);
-				System.out.println("Hindi Marks: " + hindiMarks);
-				System.out.println("Chemistry Marks: " + chemistryMarks);
-				System.out.println("---------------------------");
+//				System.out.println("Name: " + name);
+//				System.out.println("Roll Number: " + rollNo);
+//				System.out.println("English Marks: " + englishMarks);
+//				System.out.println("Hindi Marks: " + hindiMarks);
+//				System.out.println("Chemistry Marks: " + chemistryMarks);
+//				System.out.println("---------------------------");
 			}
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		return student;
 
 	}
 
