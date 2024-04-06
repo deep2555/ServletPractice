@@ -3,6 +3,7 @@ package servletpractice;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,13 +22,19 @@ public class MainServlet extends HttpServlet {
 
 		if (action != null && !action.isEmpty()) {
 			if (action.equals("addData")) {
-				fetchDetailsFromForm(request, response);
+				fetchDetailsFromForm(request, response);		
+				response.setContentType("text/html");
+				response.getWriter().println("Registration done Successfully");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+				dispatcher.include(request, response);
+
 				
+
 			} else if (action.equals("fetchData")) {
 				try {
 					DatabaseConnection.fetchDataFromdb(rollNumber);
 				} catch (SQLException e) {
-					
+
 					e.printStackTrace();
 				}
 			} else {
