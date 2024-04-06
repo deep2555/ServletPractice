@@ -29,3 +29,10 @@ Feel free to explore the project and its functionalities! If you have any questi
 
 
 ![Output Image](Images/front.png)
+        |
+![Output Image](Images/addStudent.png)
+
+![Output Image](Images/fetchData.png)
+        |
+![Output Image](Images/fetchedData.png)    
+      
